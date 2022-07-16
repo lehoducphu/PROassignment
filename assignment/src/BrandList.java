@@ -15,11 +15,11 @@ public class BrandList extends Brand {
         super();
     }
 
-    public static boolean loadFromFile() {
-        File f = new File("brands.txt");
+    public static boolean loadFromFile(String loadFName) {
+        File f = new File(loadFName);
         if (f != null) {
             try {
-                FileReader fr = new FileReader("brands.txt");
+                FileReader fr = new FileReader(loadFName);
                 BufferedReader br = new BufferedReader(fr);
                 String line = "";
                 while (true) {
@@ -47,12 +47,12 @@ public class BrandList extends Brand {
 //    
 //    
 
-    public boolean saveToFile() {
+    public boolean saveToFile(String saveFName) {
 
         if (loadFromFile() == true) {
             ArrayList<Brand> arr = arrBrand;
             try {
-                FileWriter fw = new FileWriter("brands.txt");
+                FileWriter fw = new FileWriter(saveFName);
                 BufferedWriter bw = new BufferedWriter(fw);
                 String line = "";
                 while (true) {

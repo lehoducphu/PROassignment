@@ -195,6 +195,8 @@ public class CarList {
         }
     
     public static String inputStr(String ID, char c) {
+        //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID
+        //char c phụ thuộc vào FrameID (c = 'F') và EngineID (c= 'E')
         String result = inputStr(ID);
         if (ID.equals("FrameID")) {
             while (true) {
@@ -221,6 +223,7 @@ public class CarList {
     }
 
     public static String inputStr(String ID, char c, boolean isIncludeDigits) {
+        //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID, kiểm tra 5 kí tự sau kí tự đầu có phải số ko
         String result = inputStr(ID, c);
         while (true) {
             if (isIncludeDigits(result) == isIncludeDigits) {
@@ -239,6 +242,7 @@ public class CarList {
     }
 
     public static String inputStr(String ID, char c, boolean isIncludeDigits, boolean notDuplicate) {
+                //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID, kiểm tra 5 kí tự sau kí tự đầu có phải số ko, kiểm có trùng FrameID,EngineID trong list ko
         String result = inputStr(ID, c, isIncludeDigits);
         while (true) {
             if (notDuplicate_FEID(ID, result) == notDuplicate) {

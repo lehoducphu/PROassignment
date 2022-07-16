@@ -49,7 +49,7 @@ public class BrandList extends Brand {
 
     public boolean saveToFile(String saveFName) {
 
-        if (loadFromFile() == true) {
+        if (loadFromFile(saveFName) == true) {
             ArrayList<Brand> arr = arrBrand;
             try {
                 FileWriter fw = new FileWriter(saveFName);

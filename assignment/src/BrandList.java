@@ -143,7 +143,7 @@ public class BrandList extends Brand {
     }
 
     public static void listBrands() {
-        if (loadFromFile() == true);
+        
         ArrayList<Brand> arr = arrBrand;
         for (Brand brand : arr) {
             System.out.println(brand);

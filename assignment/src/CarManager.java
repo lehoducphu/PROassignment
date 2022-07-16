@@ -10,7 +10,7 @@ public class CarManager {
         s1.updateBrand();
 //        s1.listBrands();
 //        System.out.println(s1.loadFromFile());
-        System.out.println(s1.saveToFile());
+        System.out.println(s1.saveToFile("brands.txt"));
         s1.listBrands();
     }
 

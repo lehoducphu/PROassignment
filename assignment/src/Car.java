@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment;
+
 
 /**
  *
@@ -72,7 +72,7 @@ public class Car implements Comparable<Car> {
 
     @Override
     public String toString() {
-        return carID + ", " + brand.brandID + ", " + color + ", " + frameID + ", " + engineID;
+        return carID + ", " + brand.getBrandId() + ", " + color + ", " + frameID + ", " + engineID;
     }
 
     public String screenString() {
@@ -82,19 +82,6 @@ public class Car implements Comparable<Car> {
 
     @Override
     public int compareTo(Car o) {
-        // khi tien hanh so sanh thi ta phai trien khai phuong thuwc compareTo() nay
-// de trien khai sap xep theo thu tu tang dan
-// thi khi this >0 thi tra ve 1, this = o thi tra ve 0, this<o thi tra ve -1
-
-// gia sju ta se tien thanh sap xep theo thu tu tang dan ve dien tich
-//if (this.getArea() > o.getArea())
-//        return 1;
-//        else if (this.getArea() == o.getArea())
-//                return 0;
-//                else
-//                return -1;
-//gia su phuc tap hon la neu 2 hcn co cung dien tich
-//thi ta lai muon sap xep theo thu tu giam dan ve chu vi
         if (this.getBrand().getBrandName().compareTo(o.getBrand().getBrandName()) > 0) {
             return 1;
         } else if (this.getBrand().getBrandName().compareTo(o.getBrand().getBrandName()) < 0) {

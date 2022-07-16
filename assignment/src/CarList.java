@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package assignment;
+
 
 import java.util.*;
 
@@ -16,9 +16,8 @@ public class CarList {
     ArrayList<Brand> bList = new ArrayList<>();
     static ArrayList<Car> cList = new ArrayList<>();
 
-    public CarList(ArrayList<Car> cList, BrandList bList) {
-        this.cList = cList;
-        this.bList = bList.brandList;
+    public CarList(BrandList bList) {
+        this.bList = bList.arrBrand;
 
     }
 

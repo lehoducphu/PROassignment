@@ -18,15 +18,14 @@ import java.util.*;
  */
 public class CarList {
 
-    ArrayList<Brand> bList = new ArrayList<>();
-    static ArrayList<Car> cList = new ArrayList<>();
-
+    static ArrayList<Brand> bList = new ArrayList();
+    static ArrayList<Car> cList = new ArrayList();
+    String[] strs;
     public CarList(BrandList bList) {
         this.bList = bList.arrBrand;
-
+        
     }
-
-    public boolean loadFromFile(String loadFName) {
+    public static boolean loadFromFile(String loadFName) {
         File f = new File(loadFName);
         if (f != null) {
             try {
@@ -50,6 +49,7 @@ public class CarList {
                     cList.add(obj);
                 }
                 fr.close();
+
             } catch (Exception e) {
             }
             return true;
@@ -64,10 +64,12 @@ public class CarList {
             try {
                 FileWriter fw = new FileWriter(saveFName);
                 BufferedWriter bw = new BufferedWriter(fw);
+                            ArrayList<Car> arr = cList;
+
                 String line = "";
                 while (true) {
-                    for (int i = 0; i < cList.size(); i++) {
-                        bw.write(cList.get(i).toString());
+                    for (int i = 0; i < arr.size(); i++) {
+                        bw.write(arr.get(i).toString());
                         bw.newLine();
                     }
                     bw.close();
@@ -82,7 +84,7 @@ public class CarList {
         }
     }
 
-    public int searchID(String carID) {
+    public static int searchID(String carID) {
         int N = cList.size();
         for (int i = 0; i < N; i++) {
             String str = cList.get(i).getCarID();
@@ -140,13 +142,13 @@ public class CarList {
         return true;
     }
 
-    public void listCars() {
+    public static void listCars() {
         //sắp xếp cList theo chiều tăng dần của BrandName
         Collections.sort(cList);
         int N = cList.size();
         for(int i = 0; i< N;i++){
             Car c = cList.get(i);
-            System.out.println(c.screenString());
+            System.out.println(c.toString());
         }
     }
 

@@ -10,14 +10,10 @@ public class CarManager {
 //        s1.listBrands();
 //        s1.updateBrand();
 //        s1.listBrands();
-//        System.out.println(s1.loadFromFile());
-//        System.out.println(s1.saveToFile("brands.txt"));
-//        s1.listBrands();
-
-boolean h = cList.loadFromFile("cars.txt");
-
+        System.out.println(bList.loadFromFile("brands.txt"));
+        bList.listBrands();
+        System.out.println(cList.loadFromFile("cars.txt"));
 cList.listCars();
-boolean cc = cList.updateCar();
     }
 
 }

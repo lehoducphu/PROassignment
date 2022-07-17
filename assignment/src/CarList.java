@@ -5,6 +5,11 @@
  */
 
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.*;
 
 /**
@@ -21,12 +26,60 @@ public class CarList {
 
     }
 
-    public boolean loadFromFile(String str) {
-        return true;
+    public boolean loadFromFile(String loadFName) {
+        File f = new File(loadFName);
+        if (f != null) {
+            try {
+                FileReader fr = new FileReader(loadFName);
+                BufferedReader br = new BufferedReader(fr);
+                String line = "";
+                while (true) {
+                    line = br.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    String[] st = line.split("[,\\:]");
+                    String carID = st[0];
+                    String brand = st[1];
+                    String color = st[2];
+                    String frameID = st[3];
+                    String engineID = st[4];
+                    int pos = BrandList.searchID(brand);
+                    Brand b = bList.get(pos);
+                    Car obj = new Car(carID, b, color, frameID, engineID);
+                    cList.add(obj);
+                }
+                fr.close();
+            } catch (Exception e) {
+            }
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
-    public boolean saveToFile(String str) {
-        return true;
+    public boolean saveToFile(String saveFName) {
+        if (loadFromFile(saveFName) == true) {
+            try {
+                FileWriter fw = new FileWriter(saveFName);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String line = "";
+                while (true) {
+                    for (int i = 0; i < cList.size(); i++) {
+                        bw.write(cList.get(i).toString());
+                        bw.newLine();
+                    }
+                    bw.close();
+                    fw.close();
+
+                }
+            } catch (Exception e) {
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public int searchID(String carID) {
@@ -61,6 +114,7 @@ public class CarList {
     }
 
     public boolean updateCar() {
+        
         //cập nhật 1 phần tử trong arrayList cList
         
         Scanner sc = new Scanner(System.in);

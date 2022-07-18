@@ -13,7 +13,8 @@ public class CarManager {
         System.out.println(bList.loadFromFile("brands.txt"));
 //        bList.listBrands();
         System.out.println(cList.loadFromFile("cars.txt"));
-cList.listCars();
+//        cList.showCarList();
+        cList.listCars();
         System.out.println(cList.saveToFile("cars.txt"));
     }
 

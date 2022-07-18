@@ -60,16 +60,14 @@ public class CarList {
     }
 
     public boolean saveToFile(String saveFName) {
-        if (loadFromFile(saveFName) == true) {
             try {
-                File f = new File(saveFName);
-                FileWriter fw = new FileWriter(f);
-                PrintWriter pw = new PrintWriter(fw);
-                ArrayList<Car> arr = cList;
-                for (Car p : arr) {
-                    pw.println(p);
+                FileWriter fw = new FileWriter(saveFName);
+                BufferedWriter bw = new BufferedWriter(fw);
+                for (int i = 0; i< cList.size();i++ ) {
+                    bw.write(cList.get(i).toString());
+                    bw.newLine();
                 }
-                pw.close();
+                bw.close();
                 fw.close();
 
             } catch (IOException ioe) {
@@ -77,10 +75,8 @@ public class CarList {
                 ioe.printStackTrace();
             }
             return true;
-        } else {
-            return false;
         }
-    }
+    
 
     public static int searchID(String carID) {
         int N = cList.size();
@@ -144,6 +140,12 @@ public class CarList {
         Collections.sort(cList);
         int N = cList.size();
         for (int i = 0; i < N; i++) {
+            Car c = cList.get(i);
+            System.out.println(c.toString());
+        }
+    }
+    public static void showCarList(){
+        for(int i =0; i< cList.size();i++){
             Car c = cList.get(i);
             System.out.println(c.toString());
         }

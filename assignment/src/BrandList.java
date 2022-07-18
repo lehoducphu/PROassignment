@@ -28,9 +28,9 @@ public class BrandList extends Brand {
                         break;
                     }
                     String[] st = line.split("[,\\:]");
-                    String brandId = st[0];
-                    String brandName = st[1];
-                    String soundBrand = st[2];
+                    String brandId = st[0].trim();
+                    String brandName = st[1].trim();
+                    String soundBrand = st[2].trim();
                     double price = Double.parseDouble(st[3]);
                     Brand obj = new Brand(brandId, brandName, soundBrand, price);
                     arrBrand.add(obj);

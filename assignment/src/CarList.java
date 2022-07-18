@@ -38,11 +38,11 @@ public class CarList {
                         break;
                     }
                     String[] st = line.split("[,\\:]");
-                    String carID = st[0];
-                    String brand = st[1];
-                    String color = st[2];
-                    String frameID = st[3];
-                    String engineID = st[4];
+                    String carID = st[0].trim();
+                    String brand = st[1].trim();
+                    String color = st[2].trim();
+                    String frameID = st[3].trim();
+                    String engineID = st[4].trim();
                     int pos = BrandList.searchID(brand);
                     Brand b = bList.get(pos);
                     Car obj = new Car(carID, b, color, frameID, engineID);
@@ -69,7 +69,7 @@ public class CarList {
                 String line = "";
                 while (true) {
                     for (int i = 0; i < arr.size(); i++) {
-                        bw.write(arr.get(i).toString());
+                        bw.write(arr.get(i).screenString());
                         bw.newLine();
                     }
                     bw.close();

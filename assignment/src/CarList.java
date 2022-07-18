@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import com.sun.xml.internal.ws.util.StreamUtils;
 import java.io.*;
 
@@ -20,10 +19,12 @@ public class CarList {
     static ArrayList<Brand> bList = new ArrayList();
     static ArrayList<Car> cList = new ArrayList();
     String[] strs;
+
     public CarList(BrandList bList) {
         this.bList = bList.arrBrand;
-        
+
     }
+
     public static boolean loadFromFile(String loadFName) {
         File f = new File(loadFName);
         if (f != null) {
@@ -64,16 +65,16 @@ public class CarList {
                 File f = new File(saveFName);
                 FileWriter fw = new FileWriter(f);
                 PrintWriter pw = new PrintWriter(fw);
-                            ArrayList<Car> arr = cList;
-                    for(Car p: arr)
-                pw.println(p);
-                    pw.close();                  
-                    fw.close();
+                ArrayList<Car> arr = cList;
+                for (Car p : arr) {
+                    pw.println(p);
+                }
+                pw.close();
+                fw.close();
 
-                
             } catch (IOException ioe) {
                 System.err.println("Exception occurred:");
-           ioe.printStackTrace();
+                ioe.printStackTrace();
             }
             return true;
         } else {
@@ -113,9 +114,8 @@ public class CarList {
     }
 
     public boolean updateCar() {
-        
+
         //cập nhật 1 phần tử trong arrayList cList
-        
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter CarID: ");
         String updatedID = sc.next();
@@ -143,7 +143,7 @@ public class CarList {
         //sắp xếp cList theo chiều tăng dần của BrandName
         Collections.sort(cList);
         int N = cList.size();
-        for(int i = 0; i< N;i++){
+        for (int i = 0; i < N; i++) {
             Car c = cList.get(i);
             System.out.println(c.toString());
         }
@@ -172,7 +172,6 @@ public class CarList {
 
         //method nhập ID kiểm tra độ dài
         //ID dùng để chọn FrameID hoặc EngineID để nhập
-        
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         while (true) {
@@ -201,7 +200,7 @@ public class CarList {
 
     public static boolean isIncludeDigits(String input) {
         //check 5 kí tự sau kí tự đầu có phải số ko
-        
+
         for (int i = 1; i < input.length(); i++) {
             char c = input.charAt(i);
             if (!Character.isDigit(c)) {
@@ -217,7 +216,6 @@ public class CarList {
         //trả về true thì không trùng, trả về false thì trùng
         //ID dùng để chọn FrameID hoặc EngineID để kiểm tra trùng
         //input là chuỗi để kiểm tra trùng
-        
         int check = 0;
         if (ID.equals("FrameID")) {
 
@@ -232,21 +230,21 @@ public class CarList {
                 return false;
             }
         } else {
-                for (int i = 0; i < cList.size(); i++) {
-                    if (cList.get(i).getEngineID().equals(input)) {
-                        check = 1;
-                    }
+            for (int i = 0; i < cList.size(); i++) {
+                if (cList.get(i).getEngineID().equals(input)) {
+                    check = 1;
                 }
-                if (check == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-
+            }
+            if (check == 0) {
+                return true;
+            } else {
+                return false;
             }
 
         }
-    
+
+    }
+
     public static String inputStr(String ID, char c) {
         //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID
         //char c phụ thuộc vào FrameID (c = 'F') và EngineID (c= 'E')
@@ -295,7 +293,7 @@ public class CarList {
     }
 
     public static String inputStr(String ID, char c, boolean isIncludeDigits, boolean notDuplicate) {
-                //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID, kiểm tra 5 kí tự sau kí tự đầu có phải số ko, kiểm có trùng FrameID,EngineID trong list ko
+        //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID, kiểm tra 5 kí tự sau kí tự đầu có phải số ko, kiểm có trùng FrameID,EngineID trong list ko
         String result = inputStr(ID, c, isIncludeDigits);
         while (true) {
             if (notDuplicate_FEID(ID, result) == notDuplicate) {

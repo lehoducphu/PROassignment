@@ -5,11 +5,10 @@
  */
 
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import com.sun.xml.internal.ws.util.StreamUtils;
+import java.io.*;
+
+import java.nio.file.*;
 import java.util.*;
 
 /**
@@ -62,20 +61,17 @@ public class CarList {
     public boolean saveToFile(String saveFName) {
         if (loadFromFile(saveFName) == true) {
             try {
-                FileWriter fw = new FileWriter(saveFName);
-                BufferedWriter bw = new BufferedWriter(fw);
+                File f = new File(saveFName);
+                FileWriter fw = new FileWriter(f);
+                PrintWriter pw = new PrintWriter(fw);
                             ArrayList<Car> arr = cList;
-
-                String line = "";
-                while (true) {
                     for (int i = 0; i < arr.size(); i++) {
-                        bw.write(arr.get(i).toString());
-                        bw.newLine();
+                        pw.println(arr.get(i).toString());                        
                     }
-                    bw.close();
+                                        pw.close();                  
                     fw.close();
 
-                }
+                
             } catch (Exception e) {
             }
             return true;

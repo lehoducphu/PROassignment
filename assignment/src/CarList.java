@@ -69,7 +69,7 @@ public class CarList {
                 String line = "";
                 while (true) {
                     for (int i = 0; i < arr.size(); i++) {
-                        bw.write(arr.get(i).screenString());
+                        bw.write(arr.get(i).toString());
                         bw.newLine();
                     }
                     bw.close();

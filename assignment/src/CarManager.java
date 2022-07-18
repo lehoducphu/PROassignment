@@ -16,6 +16,7 @@ public class CarManager {
         System.out.println(i);
         System.out.println(cList.loadFromFile("cars.txt"));
 cList.listCars();
+        cList.saveToFile("cars.txt");
     }
 
 }

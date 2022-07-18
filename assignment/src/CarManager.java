@@ -12,8 +12,6 @@ public class CarManager {
 //        s1.listBrands();
         System.out.println(bList.loadFromFile("brands.txt"));
 //        bList.listBrands();
-        int i = bList.searchID("B7-MS");
-        System.out.println(i);
         System.out.println(cList.loadFromFile("cars.txt"));
 cList.listCars();
         System.out.println(cList.saveToFile("cars.txt"));

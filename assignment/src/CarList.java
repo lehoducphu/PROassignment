@@ -65,14 +65,15 @@ public class CarList {
                 FileWriter fw = new FileWriter(f);
                 PrintWriter pw = new PrintWriter(fw);
                             ArrayList<Car> arr = cList;
-                    for (int i = 0; i < arr.size(); i++) {
-                        pw.println(arr.get(i).toString());                        
-                    }
-                                        pw.close();                  
+                    for(Car p: arr)
+                pw.println(p);
+                    pw.close();                  
                     fw.close();
 
                 
-            } catch (Exception e) {
+            } catch (IOException ioe) {
+                System.err.println("Exception occurred:");
+           ioe.printStackTrace();
             }
             return true;
         } else {

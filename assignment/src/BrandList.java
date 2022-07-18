@@ -114,6 +114,28 @@ public class BrandList extends Brand {
         }
     }
 
+        public static boolean notDuplicate_brandID(String input) {
+
+        //trả về true thì không trùng, trả về false thì trùng
+        //input là chuỗi để kiểm tra trùng
+        int check = 0;
+
+            for (int i = 0; i < arrBrand.size(); i++) {
+                if (arrBrand.get(i).getBrandId().equals(input)) {
+                    check = 1;
+                }
+            }
+            if (check == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        
+
+    }
+    
+    
+    
     public void updateBrand() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the brand ID: ");

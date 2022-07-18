@@ -14,8 +14,8 @@ public class CarManager {
 //        bList.listBrands();
         System.out.println(cList.loadFromFile("cars.txt"));
 //        cList.showCarList();
-        cList.listCars();
-        System.out.println(cList.saveToFile("cars.txt"));
+//        cList.listCars();
+//        System.out.println(cList.saveToFile("cars.txt"));
     }
 
 }

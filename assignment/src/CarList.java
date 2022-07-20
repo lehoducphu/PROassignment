@@ -281,7 +281,7 @@ public class CarList {
         while (true) {
             if (isIncludeDigits(result) == isIncludeDigits) {
                 break;
-            } else if (ID.equals("FrameID")) {
+            } else if (ID.equals("FrameID")) { //nếu nhập FrameID
                 System.err.println("You have entered wrong string. Reason: String must be digits only");
                 System.err.print("Please enter the Frame ID again: ");
                 result = inputStr(ID);
@@ -296,7 +296,7 @@ public class CarList {
 
     public static String inputStr(String ID, char c, boolean isIncludeDigits, boolean notDuplicate) {
         //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID, kiểm tra 5 kí tự sau kí tự đầu có phải số ko, kiểm có trùng FrameID,EngineID trong list ko
-        String result = inputStr(ID, c, isIncludeDigits);
+        String result = inputStr(ID, c, isIncludeDigits); //lấy String từ method kiểm tra kí tự đầu và digit
         while (true) {
             if (notDuplicate_FEID(ID, result) == notDuplicate) {
                 break;
@@ -312,5 +312,5 @@ public class CarList {
         }
         return result;
     }
-
+    
 }

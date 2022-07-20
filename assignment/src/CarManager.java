@@ -53,8 +53,10 @@ public class CarManager {
                 case 9:
                     break;
                 case 10:
+                    
                     break;
                 case 11:
+                    cList.saveToFile("cars.txt");
                     break;
                 case 12:
                     stop = 1;

@@ -11,7 +11,7 @@ public class Menu {
         for (int i = 0; i < N; i++) {
             System.out.println((i + 1) + ". " + options.get(i));
         }
-        System.out.print("Please choose an option: ");
+        System.out.print("\nPlease choose an option: ");
         response = sc.nextInt();
         return response;
 

@@ -85,7 +85,7 @@ public class BrandList extends Brand {
     }
 
     public static void addBrand() {
-        
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a string ");
 //        String brandId = MyLib.brandId();
@@ -114,28 +114,25 @@ public class BrandList extends Brand {
         }
     }
 
-        public static boolean notDuplicate_brandID(String input) {
+    public static boolean notDuplicate_brandID(String input) {
 
         //trả về true thì không trùng, trả về false thì trùng
         //input là chuỗi để kiểm tra trùng
         int check = 0;
 
-            for (int i = 0; i < arrBrand.size(); i++) {
-                if (arrBrand.get(i).getBrandId().equals(input)) {
-                    check = 1;
-                }
+        for (int i = 0; i < arrBrand.size(); i++) {
+            if (arrBrand.get(i).getBrandId().equals(input)) {
+                check = 1;
             }
-            if (check == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        
+        }
+        if (check == 0) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
-    
-    
-    
+
     public void updateBrand() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the brand ID: ");
@@ -165,7 +162,7 @@ public class BrandList extends Brand {
     }
 
     public static void listBrands() {
-        
+
         ArrayList<Brand> arr = arrBrand;
         for (Brand brand : arr) {
             System.out.println(brand);

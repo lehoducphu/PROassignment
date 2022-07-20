@@ -60,23 +60,22 @@ public class CarList {
     }
 
     public boolean saveToFile(String saveFName) {
-            try {
-                FileWriter fw = new FileWriter(saveFName);
-                BufferedWriter bw = new BufferedWriter(fw);
-                for (int i = 0; i< cList.size();i++ ) {
-                    bw.write(cList.get(i).toString());
-                    bw.newLine();
-                }
-                bw.close();
-                fw.close();
-
-            } catch (IOException ioe) {
-                System.err.println("Exception occurred:");
-                ioe.printStackTrace();
+        try {
+            FileWriter fw = new FileWriter(saveFName);
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < cList.size(); i++) {
+                bw.write(cList.get(i).toString());
+                bw.newLine();
             }
-            return true;
+            bw.close();
+            fw.close();
+
+        } catch (IOException ioe) {
+            System.err.println("Exception occurred:");
+            ioe.printStackTrace();
         }
-    
+        return true;
+    }
 
     public static int searchID(String carID) {
         int N = cList.size();
@@ -144,8 +143,9 @@ public class CarList {
             System.out.println(c.toString());
         }
     }
-    public static void showCarList(){
-        for(int i =0; i< cList.size();i++){
+
+    public static void showCarList() {
+        for (int i = 0; i < cList.size(); i++) {
             Car c = cList.get(i);
             System.out.println(c.toString());
         }

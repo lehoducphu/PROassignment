@@ -9,6 +9,8 @@ import java.io.*;
 
 import java.nio.file.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -60,6 +62,7 @@ public class CarList {
     }
 
     public boolean saveToFile(String saveFName) {
+        
         try {
             FileWriter fw = new FileWriter(saveFName);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -69,12 +72,15 @@ public class CarList {
             }
             bw.close();
             fw.close();
-
-        } catch (IOException ioe) {
-            System.err.println("Exception occurred:");
-            ioe.printStackTrace();
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CarList.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
-        return true;
+        System.out.println("Save to file successfully!");
+            return true;
     }
 
     public static int searchID(String carID) {

@@ -114,6 +114,14 @@ public class MyLib {
 
         return false;
     }
+    
+    public static boolean isInRange(int num, int start, int end){
+    if(num>=start && num<=end){
+        return true;       
+    }else{
+        return false;
+    }
+}
 
     public static String inputStr(int length, boolean isIncludeDigits) {
         String result = inputStr(length);

@@ -27,15 +27,15 @@ public class CarList {
 
     }
 
-    public static boolean loadFromFile(String loadFName) {
+    public static boolean loadFromFile(String loadFName) {//lấy thông tin từ file
         File f = new File(loadFName);
-        if (f != null) {
+        if (f != null) {//kiểm tra file có trống ko
             try {
                 FileReader fr = new FileReader(loadFName);
                 BufferedReader br = new BufferedReader(fr);
                 String line = "";
                 while (true) {
-                    line = br.readLine();
+                    line = br.readLine();//đọc từng dòng trong file 
                     if (line == null) {
                         break;
                     }
@@ -61,7 +61,7 @@ public class CarList {
         }
     }
 
-    public boolean saveToFile(String saveFName) {
+    public boolean saveToFile(String saveFName) {//lưu thông tin vào file
         
         try {
             FileWriter fw = new FileWriter(saveFName);
@@ -79,11 +79,11 @@ public class CarList {
             Logger.getLogger(CarList.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        System.out.println("Save to file successfully!");
             return true;
     }
 
     public static int searchID(String carID) {
+        //tìm carID trong cList
         int N = cList.size();
         for (int i = 0; i < N; i++) {
             String str = cList.get(i).getCarID();
@@ -120,21 +120,21 @@ public class CarList {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter CarID: ");
         String updatedID = sc.next();
-        int pos = searchID(updatedID);
+        int pos = searchID(updatedID);//kiểm tra phần tử có trong list
         if (pos < 0) {
             System.out.println("Not found!");
             return false;
         } else {
-            Brand b = (Brand) Menu.ref_getChoice(bList);
-            String color = inputColor();
+            Brand b = (Brand) Menu.ref_getChoice(bList);//chọn Brand
+            String color = inputColor();//chọn color
 
             System.out.print("Enter Frame ID: ");
-            String FrameID = inputStr("FrameID", 'F', true, true);
+            String FrameID = inputStr("FrameID", 'F', true, true);//nhập và kiểm tra FrameID
 
             System.out.print("Enter Engine ID: ");
-            String EngineID = inputStr("EngineID", 'E', true, true);
+            String EngineID = inputStr("EngineID", 'E', true, true);//nhập và kiểm tra EngineID
 
-            Car c = new Car(cList.get(pos).getCarID(), b, color, FrameID, EngineID);
+            Car c = new Car(cList.get(pos).getCarID(), b, color, FrameID, EngineID);//khởi tạo đối tượng vừa nhập
             cList.set(pos, c);
         }
         return true;
@@ -150,12 +150,6 @@ public class CarList {
         }
     }
 
-    public static void showCarList() {
-        for (int i = 0; i < cList.size(); i++) {
-            Car c = cList.get(i);
-            System.out.println(c.toString());
-        }
-    }
 
     public static String inputColor() {
         //chọn màu cho Car

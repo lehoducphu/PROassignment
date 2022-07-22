@@ -284,11 +284,11 @@ public class CarList {
             } else if (ID.equals("FrameID")) { //nếu nhập FrameID
                 System.err.println("You have entered wrong string. Reason: String must be digits only");
                 System.err.print("Please enter the Frame ID again: ");
-                result = inputStr(ID);
+                result = inputStr(ID, c);
             } else {
                 System.err.println("You have entered wrong string. Reason: String must be digits only");
                 System.err.print("Please enter the Engine ID again: ");
-                result = inputStr(ID);
+                result = inputStr(ID, c);
             }
         }
         return result;
@@ -303,11 +303,11 @@ public class CarList {
             } else if (ID.equals("FrameID")) {
                 System.err.println("The ID you just entered has been duplicated.");
                 System.err.print("Please enter the Frame ID again: ");
-                result = inputStr(ID);
+                result = inputStr(ID, c, isIncludeDigits);
             } else {
                 System.err.println("The ID you just entered has been duplicated.");
                 System.err.print("Please enter the Engine ID again: ");
-                result = inputStr(ID);
+                result = inputStr(ID, c, isIncludeDigits);
             }
         }
         return result;

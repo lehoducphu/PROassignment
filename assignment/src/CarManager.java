@@ -28,7 +28,6 @@ public class CarManager {
         cList.loadFromFile("cars.txt");//load danh sách brand từ file brands
         int choice = 0;
         int stop = 0;
-        Object choi = Menu.ref_getChoice(ops);//tạo menu chọn chức năng
         do {
             System.out.println("List of functions:\n");
             choice = Menu.int_getChoice(ops);//in ra danh sách các chức năng, 
@@ -51,9 +50,12 @@ public class CarManager {
                     break;
                 case 6:
                     //List all cars in ascending order of brand names
+                    cList.listCars();
+                    pressAnyKeyToContinue();
                     break;
                 case 7:
                     //List cars based on a part of an input brand name
+                    
                     break;
                 case 8:
                     //Add a car
@@ -63,6 +65,8 @@ public class CarManager {
                     break;
                 case 10:
                     //Update a car based on its ID
+                    cList.updateCar();
+                    pressAnyKeyToContinue();
                     break;
                 case 11:
                     //Save cars to file

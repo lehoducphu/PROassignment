@@ -1,7 +1,8 @@
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Scanner;
+//test commit
 public class CarManager {
 
     public static void main(String[] args) {
@@ -34,13 +35,16 @@ public class CarManager {
             //người dùng nhập số đứng trước chức năng để chọn chức năng.
             switch (choice) {
                 case 1:
-                    //List all brand
-                    break;
-                case 2:
-                    //Add a new brand
-                    break;
+                    BrandList.listBrands();
+                     break;
+                case 2: 
+                    BrandList.addBrand();
+                     break;
                 case 3:
-                    //Search a brand based
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Enter id that you want to find ");
+                    String bID = sc.nextLine();
+                    BrandList.searchID(bID);
                     break;
                 case 4:
                     //Update a brand

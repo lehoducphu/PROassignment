@@ -117,6 +117,7 @@ public class CarList {
         System.out.print("Enter Engine ID: ");
         String EngineID = inputStr("EngineID", 'E', true, true);
 
+
         Car newCar = new Car(carID, b, color, FrameID, EngineID);
         cList.add(newCar);
         System.out.println("ADD: " + carID + "," + b + "," + color + "," + FrameID + "," + EngineID);
@@ -233,11 +234,12 @@ public class CarList {
 
     public static void listCars() {
         //sắp xếp cList theo chiều tăng dần của BrandName
+        
         Collections.sort(cList);
         int N = cList.size();
         for (int i = 0; i < N; i++) {
             Car c = cList.get(i);
-            System.out.println(c.toString());
+            System.out.println(c.screenString());
         }
     }
 

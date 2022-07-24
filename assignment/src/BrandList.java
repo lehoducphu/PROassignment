@@ -63,10 +63,11 @@ public class BrandList extends Brand {
                     bw.close();
                     fw.close();
                     System.out.println("Brands saved successfully!");
-                }
-            } catch (Exception e) {
-            }
-            return true;
+
+
+        } catch (Exception e) {
+        }
+        return true;
 
     }
 
@@ -82,17 +83,49 @@ public class BrandList extends Brand {
     }
 
     public static void addBrand() {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a string ");
-//        String brandId = MyLib.brandId();
-        System.out.println("Enter brandName");
-        String brandName = MyLib.brandName();
-        System.out.println("Enter soundBrand");
+        String brandId = sc.nextLine();
+        for (int i = 0; i < arrBrand.size(); i++) {
+            while (true) {
+                if (arrBrand.get(i).getBrandId().equals(brandId)) {
+                    System.out.println("Enter again");
+                    brandId = sc.nextLine();
+                } else {
+                    break;
+                }
+            }
+        }
+        String brandName = sc.nextLine();
+        while (true) {
+            if (brandName.length() == 0) {
+                System.out.println("enter again ");
+                brandName = sc.nextLine();
+            } else {
+                break;
+            }
+        }
+
         String soundBrand = sc.nextLine();
+
+        while (true) {
+            if (soundBrand.length() == 0) {
+                System.out.println("enter again ");
+                soundBrand = sc.nextLine();
+            } else {
+                break;
+            }
+        }
         double price = Double.parseDouble(sc.nextLine());
-//        Brand obj = new Brand(brandId, brandName, soundBrand, price);
-//        arrBrand().add(obj);
+        while (true) {
+            if (price <= 0) {
+                System.out.println("Please enter again ");
+            } else {
+                break;
+            }
+        }
+        Brand obj = new Brand(brandId, brandName, soundBrand, price);
+        arrBrand.add(obj);
+
         try {
             FileWriter fw = new FileWriter("data1.txt", true);
             BufferedWriter br = new BufferedWriter(fw);
@@ -106,9 +139,6 @@ public class BrandList extends Brand {
         } catch (Exception e) {
         }
 
-        for (Brand brand : arrBrand) {
-            System.out.println(brand);
-        }
     }
 
     public static boolean notDuplicate_brandID(String input) {

@@ -2,7 +2,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-//test commit
+
 public class CarManager {
 
     public static void main(String[] args) {

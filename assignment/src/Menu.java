@@ -96,7 +96,7 @@ public class Menu {
                 break;
             } else {
                 System.err.println("You have entered wrong option.\nReason: Your input is out of range of option's list.");
-                System.err.println("Please enter option again with option from " + start + "to " + end + ": ");
+                System.err.println("Please enter option again with option from " + start + " to " + end + ": ");
                 num = inputInt(isIncludeLetter, isIncludeSpecialChar);
             }
         }

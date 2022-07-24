@@ -47,30 +47,26 @@ public class BrandList extends Brand {
 //    
 //    
 
-    public boolean saveToFile(String saveFName) {
+    public static boolean saveToFile(String saveFName) {
+        //đọc dữ liệu từ savaFName bằng loadFromFile
 
-        if (loadFromFile(saveFName) == true) {
-            ArrayList<Brand> arr = arrBrand;
-            try {
-                FileWriter fw = new FileWriter(saveFName);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String line = "";
-                while (true) {
-                    for (int i = 0; i < arr.size(); i++) {
-                        bw.write(arr.get(i).toString());
-                        bw.newLine();
-                    }
-                    bw.close();
-                    fw.close();
-
+        ArrayList<Brand> arr = arrBrand;
+        try {
+            FileWriter fw = new FileWriter(saveFName);
+            BufferedWriter bw = new BufferedWriter(fw);
+            String line = "";
+            while (true) {
+                for (int i = 0; i < arr.size(); i++) {
+                    bw.write(arr.get(i).toString());
+                    bw.newLine();
                 }
-            } catch (Exception e) {
-            }
-            return true;
-        } else {
-            return false;
-        }
+                bw.close();
+                fw.close();
 
+            }
+        } catch (Exception e) {
+        }
+        return true;
     }
 
 //    
@@ -133,7 +129,7 @@ public class BrandList extends Brand {
 
     }
 
-    public void updateBrand() {
+    public static void updateBrand() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the brand ID: ");
         String brandID = sc.nextLine();
@@ -143,10 +139,10 @@ public class BrandList extends Brand {
         } else {
             System.out.print("Enter new brandName: ");
             String brandName = sc.nextLine();
-            arrBrand.get(Pos).setBrandName(brandName);
+            arrBrand.get(Pos).setBrandName(brandName.trim());
             System.out.print("Enter new soundBrand: ");
             String soundBrand = sc.nextLine();
-            arrBrand.get(Pos).setSoundBrand(soundBrand);
+            arrBrand.get(Pos).setSoundBrand(soundBrand.trim());
             System.out.print("Enter new price: ");
             double price;
             do {

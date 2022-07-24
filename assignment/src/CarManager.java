@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CarManager {
 
     public static void main(String[] args) {
-        
+
         //test commit lên github
         //danh sách các tùy chọn trong menu trong menu
         ArrayList<String> ops = new ArrayList();
@@ -24,7 +24,7 @@ public class CarManager {
 
         BrandList bList = new BrandList();
         CarList cList = new CarList(bList);
-        
+
         bList.loadFromFile("brands.txt");//load danh sách brand từ file brands
         cList.loadFromFile("cars.txt");//load danh sách brand từ file brands
         int choice = 0;
@@ -45,9 +45,14 @@ public class CarManager {
                     break;
                 case 4:
                     //Update a brand
+
+                    BrandList.updateBrand();
+                    pressAnyKeyToContinue();
                     break;
                 case 5:
                     //Save brands to the file
+                    BrandList.saveToFile("brands.txt");
+                    pressAnyKeyToContinue();
                     break;
                 case 6:
                     //List all cars in ascending order of brand names
@@ -56,7 +61,7 @@ public class CarManager {
                     break;
                 case 7:
                     //List cars based on a part of an input brand name
-                    
+
                     break;
                 case 8:
                     //Add a car
@@ -72,8 +77,8 @@ public class CarManager {
                 case 11:
                     //Save cars to file
                     boolean check = cList.saveToFile("cars.txt");
-                    if(check == true){
-                                System.out.println("Save to file successfully!");
+                    if (check == true) {
+                        System.out.println("Save to file successfully!");
                     }
                     pressAnyKeyToContinue();
 
@@ -91,7 +96,7 @@ public class CarManager {
 
     public static void pressAnyKeyToContinue() {
         //nhập phím bất kì để tiếp tục.
-        System.out.print("Press Enter key to continue...");
+        System.out.print("Press Enter key to continue...\n");
         try {
             System.in.read();
         } catch (Exception e) {

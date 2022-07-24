@@ -49,24 +49,42 @@ public class CarManager {
                     break;
                 case 4:
                     //Update a brand
+                    BrandList.updateBrand();
+                    pressAnyKeyToContinue();
                     break;
                 case 5:
                     //Save brands to the file
+                    BrandList.saveToFile("brands.txt");
+                    pressAnyKeyToContinue();
                     break;
                 case 6:
                     //List all cars in ascending order of brand names
                     cList.listCars();
                     pressAnyKeyToContinue();
                     break;
-                case 7:
-                    //List cars based on a part of an input brand name
-                    
+               case 7:
+                    // List cars a part of brandID
+                    cList.ListCarOfBrandName();
+
                     break;
                 case 8:
                     //Add a car
+                    cList.addCar(); 
+                    
+                    if(cList.saveToFile("cars.txt")){
+                        System.out.println(" Add car successful");
+                    }
+                    
                     break;
                 case 9:
                     //Remove a car
+
+                    if (cList.removeCar()) {
+                        cList.saveToFile("cars.txt");
+                        System.out.println("Remove successfully.");
+                        pressAnyKeyToContinue();
+                    }
+
                     break;
                 case 10:
                     //Update a car based on its ID
@@ -95,7 +113,7 @@ public class CarManager {
 
     public static void pressAnyKeyToContinue() {
         //nhập phím bất kì để tiếp tục.
-        System.out.print("Press Enter key to continue...");
+        System.out.print("Press Enter key to continue\n");
         try {
             System.in.read();
         } catch (Exception e) {

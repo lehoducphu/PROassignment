@@ -46,25 +46,9 @@ public class BrandList extends Brand {
     }
 //    
 //    
-//first push
-    public boolean saveToFile(String saveFName) {
 
-<<<<<<< Updated upstream
-        if (loadFromFile(saveFName) == true) {
-            ArrayList<Brand> arr = arrBrand;
-            try {
-                FileWriter fw = new FileWriter(saveFName);
-                BufferedWriter bw = new BufferedWriter(fw);
-                String line = "";
-                while (true) {
-                    for (int i = 0; i < arr.size(); i++) {
-                        bw.write(arr.get(i).toString());
-                        bw.newLine();
-                    }
-                    bw.close();
-                    fw.close();
+    public static boolean saveToFile(String saveFName) {
 
-=======
         ArrayList<Brand> arr = arrBrand;
         try {
             FileWriter fw = new FileWriter(saveFName);
@@ -74,22 +58,14 @@ public class BrandList extends Brand {
                 for (int i = 0; i < arr.size(); i++) {
                     bw.write(arr.get(i).toString());
                     bw.newLine();
->>>>>>> Stashed changes
                 }
                 bw.close();
                 fw.close();
                 System.out.println("Brands saved successfully!");
             }
-<<<<<<< Updated upstream
-            return true;
-        } else {
-            return false;
-        }
-=======
         } catch (Exception e) {
         }
         return true;
->>>>>>> Stashed changes
 
     }
 
@@ -182,31 +158,34 @@ public class BrandList extends Brand {
 
     }
 
-    public void updateBrand() {
+    public static void updateBrand() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the brand ID: ");
-        String brandID = sc.nextLine();
-        int Pos = searchID(brandID);
-        if (Pos < 0) {
-            System.out.println("Not found!");
-        } else {
-            System.out.print("Enter new brandName: ");
-            String brandName = sc.nextLine();
-            arrBrand.get(Pos).setBrandName(brandName);
-            System.out.print("Enter new soundBrand: ");
-            String soundBrand = sc.nextLine();
-            arrBrand.get(Pos).setSoundBrand(soundBrand);
-            System.out.print("Enter new price: ");
-            double price;
-            do {
-                price = sc.nextDouble();
-                if (price <= 0) {
-                    System.out.println("Invalid price!");
-                }
-            } while (price <= 0);
-            arrBrand.get(Pos).setPrice(price);
-            System.out.println("Updated succesfully!");
-        }
+        int Pos = 0;
+        do {
+            System.out.print("Enter the brand ID: ");
+            String brandID = sc.nextLine();
+            Pos = searchID(brandID);
+            if (Pos < 0) {
+                System.err.println("Brand ID not found!");
+            } else {
+                System.out.print("Enter new brandName: ");
+                String brandName = sc.nextLine();
+                arrBrand.get(Pos).setBrandName(brandName.trim());
+                System.out.print("Enter new soundBrand: ");
+                String soundBrand = sc.nextLine();
+                arrBrand.get(Pos).setSoundBrand(soundBrand.trim());
+                System.out.print("Enter new price: ");
+                double price;
+                do {
+                    price = sc.nextDouble();
+                    if (price <= 0) {
+                        System.out.println("Invalid price!");
+                    }
+                } while (price <= 0);
+                arrBrand.get(Pos).setPrice(price);
+                System.out.println("Updated succesfully!");
+            }
+        } while (Pos < 0);
 
     }
 

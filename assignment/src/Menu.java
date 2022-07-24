@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Menu {
 
     public static int int_getChoice(ArrayList options) {
+        
         /*in ra các lựa chọn tạo ra từ ArrayList đc truyền vào
         và trả về số đứng trước lựa chọn người dùng nhập (đã qua kiểm tra)
         VD: cho 1 ArrayList: {"option 1", "option 2", "option 3"}
@@ -29,6 +30,7 @@ public class Menu {
     }
 
     public static Object ref_getChoice(ArrayList options) {
+        
         /*trả về object đã chọn ở method int_getChoice(int) trong ArrayList
         
         VD: cho 1 ArrayList: {"option 1", "option 2", "option 3"}
@@ -48,7 +50,9 @@ public class Menu {
     }
 
     public static String inputInt(boolean isIncludeLetter) {
+        
         // kiểm tra có chữ trong input ko
+        
         Scanner sc = new Scanner(System.in);
         String result = sc.nextLine();
         while (true) {
@@ -64,14 +68,16 @@ public class Menu {
     }
 
     public static int inputInt(boolean isIncludeLetter, boolean isIncludeSpecialChar) {
+        
         //kiểm tra có chữ, có kí tự đặc biệt trong input ko
+        
         String result = inputInt(isIncludeLetter);
         while (true) {
             if (MyLib.isIncludeSpecialCharacter(result) == isIncludeSpecialChar) {
                 break;
 
             } else {
-                System.err.println("You have entered wrong option.\nReason: Your input contains special character.\n");
+                System.err.println("You have entered wrong option.\nReason: Your input contains special character.");
                 System.err.println("Please enter option again: ");
                 result = inputInt(isIncludeLetter);
             }
@@ -81,13 +87,15 @@ public class Menu {
     }
 
     public static int inputInt(boolean isIncludeLetter, boolean isIncludeSpecialChar, boolean isInRange, int start, int end) {
+        
         //kiểm tra có chữ, có kí tự đặc biệt, có nằm trong khoảng [start, end] trong input ko
+        
         int num = inputInt(isIncludeLetter, isIncludeSpecialChar);
         while (true) {
             if (MyLib.isInRange(num, start, end) == isInRange) {
                 break;
             } else {
-                System.err.println("You have entered wrong option.\nReason: Your input is out of range of option's list.\n");
+                System.err.println("You have entered wrong option.\nReason: Your input is out of range of option's list.");
                 System.err.println("Please enter option again with option from " + start + "to " + end + ": ");
                 num = inputInt(isIncludeLetter, isIncludeSpecialChar);
             }

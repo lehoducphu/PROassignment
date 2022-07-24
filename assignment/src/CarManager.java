@@ -45,7 +45,6 @@ public class CarManager {
                     break;
                 case 4:
                     //Update a brand
-
                     BrandList.updateBrand();
                     pressAnyKeyToContinue();
                     break;

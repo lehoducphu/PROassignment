@@ -37,15 +37,18 @@ public class CarManager {
             switch (choice) {
                 case 1:
                     BrandList.listBrands();
+                    pressAnyKeyToContinue();
                      break;
                 case 2: 
                     BrandList.addBrand();
+                    pressAnyKeyToContinue();
                      break;
                 case 3:
                     Scanner sc = new Scanner(System.in);
                     System.out.println("Enter id that you want to find ");
                     String bID = sc.nextLine();
                     BrandList.searchID(bID);
+                    pressAnyKeyToContinue();
                     break;
                 case 4:
                     //Update a brand
@@ -65,7 +68,7 @@ public class CarManager {
                case 7:
                     // List cars a part of brandID
                     cList.ListCarOfBrandName();
-
+                    pressAnyKeyToContinue();
                     break;
                 case 8:
                     //Add a car
@@ -74,7 +77,7 @@ public class CarManager {
                     if(cList.saveToFile("cars.txt")){
                         System.out.println(" Add car successful");
                     }
-                    
+                    pressAnyKeyToContinue();
                     break;
                 case 9:
                     //Remove a car
@@ -84,7 +87,7 @@ public class CarManager {
                         System.out.println("Remove successfully.");
                         pressAnyKeyToContinue();
                     }
-
+                    pressAnyKeyToContinue();
                     break;
                 case 10:
                     //Update a car based on its ID

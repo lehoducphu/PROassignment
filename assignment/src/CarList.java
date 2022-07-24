@@ -92,12 +92,24 @@ public class CarList {
         return -1;
     }
 
-    public int searchFrame(String fID) {
-        return 0;
+    public static int searchFrame(String fID) {
+        int N = cList.size();
+        for(int i =0; i< N;i++){
+            if(cList.get(i).getFrameID().equals(fID) ){
+                return i;
+            }
+        }
+        return -1;
     }
 
-    public int searchEngine(String eID) {
-        return 0;
+    public static int searchEngine(String eID) {
+        int N = cList.size();
+        for(int i =0; i< N;i++){
+            if(cList.get(i).getEngineID().equals(eID) ){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void addCar() {
@@ -206,16 +218,11 @@ public class CarList {
     }
 
     public boolean updateCar() {
-
+        
         //cập nhật 1 phần tử trong arrayList cList
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter CarID: ");
-        String updatedID = sc.next();
-        int pos = searchID(updatedID);//kiểm tra phần tử có trong list
-        if (pos < 0) {
-            System.out.println("Not found!");
-            return false;
-        } else {
+        
+        System.out.println("List of cars:\n");
+        int pos = Menu.int_getChoice(cList);
             Brand b = (Brand) Menu.ref_getChoice(bList);//chọn Brand
             String color = inputColor();//chọn color
 
@@ -227,7 +234,7 @@ public class CarList {
 
             Car c = new Car(cList.get(pos).getCarID(), b, color, FrameID, EngineID);//khởi tạo đối tượng vừa nhập
             cList.set(pos, c);
-        }
+        
         return true;
     }
 
@@ -311,47 +318,31 @@ public class CarList {
         //input là chuỗi để kiểm tra trùng
         int check = 0;
         if (ID.equals("Car")) {
-            for (int i = 0; i < cList.size(); i++) {
-                if (cList.get(i).getCarID().equals(input)) {
-                    check = 1;
-                }
-            }
-
-            if (check == 0) {
-                return true;
-            } else {
+            if(searchID(input)!=-1){
                 return false;
+            }else{
+                return true;
             }
         }
 
         if (ID.equals("FrameID")) {
-
-            for (int i = 0; i < cList.size(); i++) {
-                if (cList.get(i).getFrameID().equals(input)) {
-                    check = 1;
-                }
-            }
-            if (check == 0) {
-                return true;
-            } else {
+            if(searchFrame(input)!=-1){
                 return false;
+            }else{
+                return true;
             }
+            
         } else {
-            for (int i = 0; i < cList.size(); i++) {
-                if (cList.get(i).getEngineID().equals(input)) {
-                    check = 1;
-                }
-            }
-            if (check == 0) {
-                return true;
-            } else {
+            if(searchEngine(input)!=-1){
                 return false;
+            }else{
+                return true;
             }
 
         }
 
+    
     }
-
     public static String inputStr(String ID, char c) {
         //method nhập ID kiểm tra độ dài, kiểm tra kí tự đầu ID
         //char c phụ thuộc vào FrameID (c = 'F') và EngineID (c= 'E')

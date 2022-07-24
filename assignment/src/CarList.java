@@ -62,7 +62,7 @@ public class CarList {
     }
 
     public boolean saveToFile(String saveFName) {//lưu thông tin vào file
-        
+
         try {
             FileWriter fw = new FileWriter(saveFName);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -72,14 +72,12 @@ public class CarList {
             }
             bw.close();
             fw.close();
-            
-            
-            
+
         } catch (IOException ex) {
             Logger.getLogger(CarList.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-            return true;
+        return true;
     }
 
     public static int searchID(String carID) {
@@ -103,15 +101,108 @@ public class CarList {
     }
 
     public void addCar() {
+// vu minh dang        
+// Thêm một car 
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter CarID: ");
+        String carID = inputCar("Car", 'C');
 
-    }
+        System.out.println("Enter BrandID");
+        Brand b = (Brand) Menu.ref_getChoice(bList);
+        String color = inputColor();
 
-    public void printBasedBrandName() {
+        System.out.print("Enter Frame ID: ");
+        String FrameID = inputStr("FrameID", 'F', true, true);
+
+        System.out.print("Enter Engine ID: ");
+        String EngineID = inputStr("EngineID", 'E', true, true);
+
+        Car newCar = new Car(carID, b, color, FrameID, EngineID);
+        cList.add(newCar);
+        System.out.println("ADD: " + carID + "," + b + "," + color + "," + FrameID + "," + EngineID);
 
     }
 
     public boolean removeCar() {
+        // vu minh dang
+        // xóa một car theo ID
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter ID remove");
+
+        String updatedID = sc.nextLine();
+        int pos = searchID(updatedID);
+        if (pos < 0) {
+            System.out.println("Not found!");
+            return false;
+        } else {
+            cList.remove(pos);
+        }
+
         return true;
+    }
+
+    public void ListCarOfBrandName() {
+        // vu minh dang 
+        // hiện thị car theo tìm kiếm theo một phần của brand name ex: BMW 730Li 
+        // input: 730Li
+        // output: all the same input
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a part of an input brand name ");
+        String input = sc.nextLine().toUpperCase();
+
+        boolean flag = true;
+        // dùng flag để đặt vào điều ko tìm thấy brandName nếu ko có brand name
+        // nào được tìm thấy thì flag bằng false rồi if in ra "no result" 
+        for (int i = 0; i < bList.size(); i++) {
+            String brandName = bList.get(i).getBrandName().toUpperCase();
+            String[] words = brandName.split("\\s+");
+            if (words[1].equals(input)) {
+                System.out.println(bList.get(i));
+
+            }
+            if (words[1] == null ? input != null : !words[1].equals(input)) {
+                flag = false;
+            }
+        }
+
+        if (flag == false) {
+            System.out.println("NO result");
+        }
+
+    }
+
+    public static String checkLengCarID(String ID) {
+        //method nhập ID CAR kiểm tra độ dài " C00 "
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        while (true) {
+            if (input.length() == 3) {
+                break;
+            } else {
+                System.err.println("You've enter a string with length: " + input.length());
+                System.err.print("Please enter the Car ID again: ");
+                input = sc.nextLine();
+            }
+        }
+        return input;
+    }
+
+    public static String inputCar(String ID, char c) {
+        // vu minhd dang
+        String result = checkLengCarID(ID);
+        if (ID.equals("Car")) {
+            while (true) {
+                if (firstChar(result, c)) {
+                    break;
+                } else {
+                    System.err.println("You have entered wrong string. Reason: First character of ID must be 'C' uppercasse");
+                    System.err.print("Please enter the Car ID again: ");
+                    result = inputStr(ID);
+                }
+            }
+        }
+        return result;
+
     }
 
     public boolean updateCar() {
@@ -149,7 +240,6 @@ public class CarList {
             System.out.println(c.toString());
         }
     }
-
 
     public static String inputColor() {
         //chọn màu cho Car
@@ -219,6 +309,20 @@ public class CarList {
         //ID dùng để chọn FrameID hoặc EngineID để kiểm tra trùng
         //input là chuỗi để kiểm tra trùng
         int check = 0;
+        if (ID.equals("Car")) {
+            for (int i = 0; i < cList.size(); i++) {
+                if (cList.get(i).getCarID().equals(input)) {
+                    check = 1;
+                }
+            }
+
+            if (check == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         if (ID.equals("FrameID")) {
 
             for (int i = 0; i < cList.size(); i++) {
@@ -312,5 +416,5 @@ public class CarList {
         }
         return result;
     }
-    
+
 }

@@ -77,7 +77,7 @@ public class Menu {
                 break;
 
             } else {
-                System.err.println("You have entered wrong option.\nReason: Your input contains special character.\n");
+                System.err.println("You have entered wrong option.\nReason: Your input contains special character.");
                 System.err.println("Please enter option again: ");
                 result = inputInt(isIncludeLetter);
             }
@@ -95,7 +95,7 @@ public class Menu {
             if (MyLib.isInRange(num, start, end) == isInRange) {
                 break;
             } else {
-                System.err.println("You have entered wrong option.\nReason: Your input is out of range of option's list.\n");
+                System.err.println("You have entered wrong option.\nReason: Your input is out of range of option's list.");
                 System.err.println("Please enter option again with option from " + start + "to " + end + ": ");
                 num = inputInt(isIncludeLetter, isIncludeSpecialChar);
             }

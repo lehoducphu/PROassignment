@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class CarManager {
 
     public static void main(String[] args) {
-
+        
+        //test commit lên github
         //danh sách các tùy chọn trong menu trong menu
         ArrayList<String> ops = new ArrayList();
         ops.add("List all brand");
@@ -23,7 +24,7 @@ public class CarManager {
 
         BrandList bList = new BrandList();
         CarList cList = new CarList(bList);
-
+        
         bList.loadFromFile("brands.txt");//load danh sách brand từ file brands
         cList.loadFromFile("cars.txt");//load danh sách brand từ file brands
         int choice = 0;

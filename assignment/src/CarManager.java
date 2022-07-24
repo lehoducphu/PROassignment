@@ -6,7 +6,6 @@ public class CarManager {
 
     public static void main(String[] args) {
         
-        //test commit lên github
         //danh sách các tùy chọn trong menu trong menu
         ArrayList<String> ops = new ArrayList();
         ops.add("List all brand");

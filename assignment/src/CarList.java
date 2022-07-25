@@ -220,9 +220,20 @@ public class CarList {
     public boolean updateCar() {
         
         //cập nhật 1 phần tử trong arrayList cList
-        
-        System.out.println("List of cars:\n");
-        int pos = Menu.int_getChoice(cList);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input carID: ");
+        int pos =0;
+        while(true){
+        String updateID = sc.next();
+        pos = searchID(updateID);
+        if(pos==-1){
+            System.err.println("Not found!");
+            System.err.print("Please input carID again: ");
+        }else{
+            break;
+        }
+        }
+        System.out.println("List of Brands: \n");
             Brand b = (Brand) Menu.ref_getChoice(bList);//chọn Brand
             String color = inputColor();//chọn color
 

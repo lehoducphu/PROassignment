@@ -91,7 +91,9 @@ public class CarManager {
                     break;
                 case 10:
                     //Update a car based on its ID
-                    cList.updateCar();
+                    if(cList.updateCar()){
+                        System.out.println("Update CarID successfully!");
+                    }
                     pressAnyKeyToContinue();
                     break;
                 case 11:
